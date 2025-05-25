@@ -3,6 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-inter: 'Inter', sans-serif;
+  --font-chango: 'Chango', sans-serif;
+  --font-geist-sans: 'Geist', sans-serif;
+  --font-geist-mono: 'Geist_Mono', monospace;
 }
 
 @theme inline {
@@ -10,17 +14,63 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-chango: var(--font-chango);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+} */
+
+::selection {
+  color: white;
+  background: #00C951;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.any {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%),
+
+  radial-gradient(
+    ellipse at left center,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.2) 30%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.MbHeader,.Sidebar {
+  display: none;
+}
+
+.hero {
+  height: 100vh;
+}
+
+@media screen and (max-width: 1070px) {
+  .Header {
+    display: none;
+  }
+
+  .MbHeader, .Sidebar {
+    display: block
+  }
+}
+
+@media (max-width: 600px) {
+  .MuiTimeline-root .MuiTimelineItem-root {
+    --Timeline-position: right !important;
+  }
 }
