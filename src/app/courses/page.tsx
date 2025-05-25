@@ -12,7 +12,7 @@ const formatMode = (mode: string) => {
     .replace("refresher", "Refresher");
 };
 
-export const formatLevel = (level: string) => {
+const formatLevel = (level: string) => {
   return level.charAt(0).toUpperCase() + level.slice(1);
 };
 

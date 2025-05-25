@@ -8,7 +8,6 @@ import Box from '@mui/material/Box';
 import { courses } from '@/lib/data'; 
 import { formatWithCommas } from '@/utils/currency';
 import { FiCheck } from "react-icons/fi";
-import { formatLevel } from '../courses/page';
 import { HiOutlineExclamation } from "react-icons/hi";
 
 interface TabPanelProps {
@@ -16,6 +15,10 @@ interface TabPanelProps {
   index: number;
   value: number;
 }
+
+const formatLevel = (level: string) => {
+  return level.charAt(0).toUpperCase() + level.slice(1);
+};
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -180,6 +183,8 @@ export default function PricingTabs() {
           </div>
         </div>
       </section>
+
+
     </div>
     
   );
