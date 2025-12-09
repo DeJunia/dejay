@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <div className="Home w-full overflow-hidden">
-      <section className="w-full pt-48 min-h-svh flex lg:hidden flex-col justify-end pb-20">
+      <section className="w-full pt-48 min-h-svh flex lg:hidden flex-col justify-end pb-20 bg-gradient-to-t from-green-100 to-white">
         <div className="max-w-6xl mx-auto flex flex-col gap-5 justify-center">
           <div className="px-4">
             <h1 className="text-3xl md:text-5xl font-extrabold font-inter text-center">
@@ -42,7 +42,7 @@ export default function Home() {
             <SimpleButton
               link="/courses"
               text="View Courses"
-              style="bg-gray-300 text-gray-800 text-sm py-3 px-5 rounded-lg font-inter font-inter"
+              style="bg-gray-100 text-gray-800 text-sm py-3 px-5 rounded-lg font-inter font-inter"
               tesxtStyle="font-semibold"
             />
           </div>

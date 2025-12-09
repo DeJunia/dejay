@@ -26,8 +26,49 @@ const chango = Chango({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dejaydrivingsch.vercel.app"),
   title: "Dejay Driving School",
-  description: "The best driving school in Ghana",
+  description:
+    "Start your driving journey today. Professional instructors, modern vehicles, and personalized lessons to help you become a confident driver.",
+  keywords:
+    "dejay driving school, driving school, school, dejay, Ghana, Ghana driving school, Ghana school, best driving school in Ghana, driving school in Ghana ",
+  openGraph: {
+    title: "Dejay Driving School",
+    description:
+      "Start your driving journey today. Professional instructors, modern vehicles, and personalized lessons to help you become a confident driver.",
+    url: "https://dejaydrivingsch.vercel.app",
+    siteName: "Dejay",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "../assets/logo/logo.jpg",
+        width: 500,
+        height: 500,
+        alt: "Dejay Driving School",
+      },
+      {
+        url: "../../public/img.jpg",
+        width: 500,
+        height: 500,
+        alt: "Dejay Driving School",
+      },
+      {
+        url: "/img.jpg",
+        width: 500,
+        height: 500,
+        alt: "Dejay Driving School",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@veagy_studio",
+    title: "Dejay Driving School",
+    description:
+      "Start your driving journey today. Professional instructors, modern vehicles, and personalized lessons to help you become a confident driver.",
+    images: ["../assets/logo/logo.jpg"],
+  },
 };
 
 export default function RootLayout({
