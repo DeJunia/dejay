@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://dejaydrivingsch.vercel.app
+
+# Sitemaps
+Sitemap: https://dejaydrivingsch.vercel.app/sitemap.xml
