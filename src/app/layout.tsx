@@ -85,7 +85,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${chango.variable} antialiased text-gray-800`}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${chango.variable} antialiased text-gray-800 font-inter`}
       >
         <Header />
         <MbHeader />

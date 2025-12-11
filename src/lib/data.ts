@@ -14,83 +14,95 @@ import { image } from "@/constant";
 import { AiOutlineSafety } from "react-icons/ai";
 import { SlChemistry } from "react-icons/sl";
 import { LuSettings2 } from "react-icons/lu";
+import { MdOutlinePlayLesson } from "react-icons/md";
 
 export const SiteLinks = [
   {
-    name: 'Home',
-    link: '/',
+    name: "Home",
+    link: "/",
     icon: BiHomeAlt2,
   },
   {
-    name: 'Courses',
-    link: '/courses',
+    name: "Lessons",
+    link: "/lessons",
+    icon: MdOutlinePlayLesson,
+  },
+  {
+    name: "Courses",
+    link: "/courses",
     icon: LuListTodo,
   },
+  // {
+  //   name: "About",
+  //   link: "/about",
+  //   icon: HiOutlineExclamationCircle,
+  // },
   {
-    name: 'About',
-    link: '/about',
-    icon: HiOutlineExclamationCircle,
-  },
-  {
-    name: 'Pricing',
-    link: '/pricing',
+    name: "Pricing",
+    link: "/pricing",
     icon: IoPricetagsOutline,
   },
   {
-    name: 'Staff',
-    link: '/staff',
+    name: "Staff",
+    link: "/staff",
     icon: LuUsers,
   },
   {
-    name: 'Contact',
-    link: '/contact',
+    name: "Contact",
+    link: "/contact",
     icon: PiPhoneCall,
   },
 ];
 
+export const categories = [
+  "Traffic Rules",
+  "Practical Skills",
+  "Safety",
+  "Vehicle Maintenance",
+  "Road Signs",
+  "Theory",
+];
 
 export const WhyUs = [
   {
     icon: GoShieldCheck,
-    title: 'Certified Instructors',
-    text: 'All our instructors are state-certified with years of teaching experience.',
+    title: "Certified Instructors",
+    text: "All our instructors are state-certified with years of teaching experience.",
   },
   {
     icon: GoStar,
-    title: '98% Pass Rate',
-    text: 'Our students consistently achieve excellent results on their driving tests.',
+    title: "98% Pass Rate",
+    text: "Our students consistently achieve excellent results on their driving tests.",
   },
   {
     icon: GoClock,
-    title: 'Flexible Scheduling',
-    text: 'Book lessons that fit your busy schedule, including evenings and weekends.',
+    title: "Flexible Scheduling",
+    text: "Book lessons that fit your busy schedule, including evenings and weekends.",
   },
   {
     icon: BsCalendar2,
-    title: 'Modern Vehicles',
-    text: 'Learn in our fleet of well-maintained, dual-control vehicles with the latest safety features.',
+    title: "Modern Vehicles",
+    text: "Learn in our fleet of well-maintained, dual-control vehicles with the latest safety features.",
   },
-]
+];
 
 export const values = [
   {
     icon: AiOutlineSafety,
-    title: 'Safety First',
-    text: 'We believe that safety is paramount in driving. Our instructors emphasize defensive driving techniques and hazard awareness in every lesson.',
+    title: "Safety First",
+    text: "We believe that safety is paramount in driving. Our instructors emphasize defensive driving techniques and hazard awareness in every lesson.",
   },
   {
     icon: LuSettings2,
-    title: 'Personalized Learning',
-    text: 'We recognize that every student is unique, with different learning styles and challenges. Our instruction adapts to meet individual needs.',
+    title: "Personalized Learning",
+    text: "We recognize that every student is unique, with different learning styles and challenges. Our instruction adapts to meet individual needs.",
   },
   {
     icon: SlChemistry,
-    title: 'Continuous Improvement',
-    text: 'We stay updated on the latest driving techniques, vehicle technologies, and teaching methods to provide the best possible instruction.',
+    title: "Continuous Improvement",
+    text: "We stay updated on the latest driving techniques, vehicle technologies, and teaching methods to provide the best possible instruction.",
   },
-  
-]
-
+];
 
 export const courses: Course[] = [
   // Full License
@@ -102,7 +114,7 @@ export const courses: Course[] = [
     fee: 2700,
     description: "Standard automatic driving lessons for full licensing.",
     packages: ["Road signs", "Driving practice", "Simulator training"],
-    routine: ["3 days/week", "2 hours/day"]
+    routine: ["3 days/week", "2 hours/day"],
   },
   {
     mode: "full_license",
@@ -112,7 +124,7 @@ export const courses: Course[] = [
     fee: 2800,
     description: "Standard manual driving lessons for full licensing.",
     packages: ["Road signs", "Manual gear training", "Test prep"],
-    routine: ["3 days/week", "2 hours/day"]
+    routine: ["3 days/week", "2 hours/day"],
   },
   {
     mode: "full_license",
@@ -128,9 +140,9 @@ export const courses: Course[] = [
       "Hazard perception training",
       "Emergency maneuvers practice",
       "Weather condition driving",
-      "Accident prevention techniques"
+      "Accident prevention techniques",
     ],
-    routine: ["4 days/week", "2 hours/day"]
+    routine: ["4 days/week", "2 hours/day"],
   },
   {
     mode: "full_license",
@@ -146,9 +158,9 @@ export const courses: Course[] = [
       "Hazard perception training",
       "Emergency maneuvers practice",
       "Weather condition driving",
-      "Accident prevention techniques"
+      "Accident prevention techniques",
     ],
-    routine: ["4 days/week", "2 hours/day"]
+    routine: ["4 days/week", "2 hours/day"],
   },
   {
     mode: "full_license",
@@ -164,9 +176,9 @@ export const courses: Course[] = [
       "Hazard perception training",
       "Emergency maneuvers practice",
       "Weather condition driving",
-      "Accident prevention techniques"
+      "Accident prevention techniques",
     ],
-    routine: ["6 days/week", "3 hours/day"]
+    routine: ["6 days/week", "3 hours/day"],
   },
   {
     mode: "full_license",
@@ -181,9 +193,9 @@ export const courses: Course[] = [
       "Hazard perception training",
       "Emergency maneuvers practice",
       "Weather condition driving",
-      "Accident prevention techniques"
+      "Accident prevention techniques",
     ],
-    routine: ["6 days/week", "3 hours/day"]
+    routine: ["6 days/week", "3 hours/day"],
   },
 
   // Driving Only
@@ -195,7 +207,7 @@ export const courses: Course[] = [
     fee: 1500,
     description: "Standard driving practice with automatic car only.",
     packages: ["Basic car control", "Traffic signs", "Parking practice"],
-    routine: ["3 days/week", "1.5 hours/day"]
+    routine: ["3 days/week", "1.5 hours/day"],
   },
   {
     mode: "driving_only",
@@ -205,7 +217,7 @@ export const courses: Course[] = [
     fee: 1500,
     description: "Standard driving with manual gear practice.",
     packages: ["Basic car control", "Gear shifting", "Road test"],
-    routine: ["3 days/week", "1.5 hours/day"]
+    routine: ["3 days/week", "1.5 hours/day"],
   },
   {
     mode: "driving_only",
@@ -219,9 +231,9 @@ export const courses: Course[] = [
       "Simulations",
       "Parking masterclass",
       "Hazard perception training",
-      "Emergency maneuvers practice"
+      "Emergency maneuvers practice",
     ],
-    routine: ["4 days/week", "2 hours/day"]
+    routine: ["4 days/week", "2 hours/day"],
   },
   {
     mode: "driving_only",
@@ -235,9 +247,9 @@ export const courses: Course[] = [
       "Steep driving",
       "Retest option",
       "Hazard perception training",
-      "Emergency maneuvers practice"
+      "Emergency maneuvers practice",
     ],
-    routine: ["4 days/week", "2 hours/day"]
+    routine: ["4 days/week", "2 hours/day"],
   },
   {
     mode: "driving_only",
@@ -250,9 +262,9 @@ export const courses: Course[] = [
       "High-speed road practice",
       "Quick theory recap",
       "Hazard perception training",
-      "Emergency maneuvers practice"
+      "Emergency maneuvers practice",
     ],
-    routine: ["6 days/week", "3 hours/day"]
+    routine: ["6 days/week", "3 hours/day"],
   },
   {
     mode: "driving_only",
@@ -265,9 +277,9 @@ export const courses: Course[] = [
       "Crash course manual driving",
       "Speed control",
       "Hazard perception training",
-      "Emergency maneuvers practice"
+      "Emergency maneuvers practice",
     ],
-    routine: ["6 days/week", "3 hours/day"]
+    routine: ["6 days/week", "3 hours/day"],
   },
 
   // Refresher
@@ -279,7 +291,7 @@ export const courses: Course[] = [
     fee: 1800,
     description: "Standard refresher course for licensed drivers.",
     packages: ["City driving", "Reverse & parking", "Road signs"],
-    routine: ["2 days/week", "1.5 hours/day"]
+    routine: ["2 days/week", "1.5 hours/day"],
   },
   {
     mode: "refresher",
@@ -293,9 +305,9 @@ export const courses: Course[] = [
       "Night practice",
       "One-on-one coaching",
       "Hazard perception training",
-      "Accident prevention techniques"
+      "Accident prevention techniques",
     ],
-    routine: ["3 days/week", "2 hours/day"]
+    routine: ["3 days/week", "2 hours/day"],
   },
   {
     mode: "refresher",
@@ -309,10 +321,10 @@ export const courses: Course[] = [
       "Parking drills",
       "Short tests",
       "Hazard perception training",
-      "Accident prevention techniques"
+      "Accident prevention techniques",
     ],
-    routine: ["4 days/week", "2 hours/day"]
-  }
+    routine: ["4 days/week", "2 hours/day"],
+  },
 ];
 
 export const testimonials: TestimonialProps[] = [
@@ -322,7 +334,7 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.woman1,
     text: "The premium automatic course was outstanding. The instructors were patient and supportive.",
     rating: 5,
-    course: "Premium Automatic Full License"
+    course: "Premium Automatic Full License",
   },
   {
     id: 2,
@@ -330,7 +342,7 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.man1,
     text: "The express manual training was intense but effective. I got my license in no time!",
     rating: 4,
-    course: "Express Manual Full License"
+    course: "Express Manual Full License",
   },
   {
     id: 3,
@@ -338,7 +350,7 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.woman2,
     text: "The refresher course helped me regain confidence after years without driving.",
     rating: 5,
-    course: "Standard Automatic Refresher"
+    course: "Standard Automatic Refresher",
   },
   {
     id: 4,
@@ -346,7 +358,7 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.man2,
     text: "The manual driving-only course was exactly what I needed. Highly recommended.",
     rating: 4,
-    course: "Standard Manual Driving Only"
+    course: "Standard Manual Driving Only",
   },
   {
     id: 5,
@@ -354,7 +366,7 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.man3,
     text: "I loved the personalized coaching in the premium refresher course!",
     rating: 5,
-    course: "Premium Automatic Refresher"
+    course: "Premium Automatic Refresher",
   },
   {
     id: 6,
@@ -362,7 +374,7 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.woman3,
     text: "Quick, effective and worth every naira. Passed my road test with ease.",
     rating: 4,
-    course: "Express Automatic Driving Only"
+    course: "Express Automatic Driving Only",
   },
   {
     id: 7,
@@ -370,7 +382,7 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.woman4,
     text: "The instructors made learning fun and stress-free. I highly recommend the standard course.",
     rating: 5,
-    course: "Standard Automatic Full License"
+    course: "Standard Automatic Full License",
   },
   {
     id: 8,
@@ -378,50 +390,57 @@ export const testimonials: TestimonialProps[] = [
     avatar: image.man4,
     text: "The gear shifting techniques in the manual course were top notch!",
     rating: 4,
-    course: "Standard Manual Driving Only"
-  }
+    course: "Standard Manual Driving Only",
+  },
 ];
 
 export const lessonProcess = [
   {
     id: 1,
     title: "Initial Assessment",
-    description: "We evaluate your current skills and create a personalized learning plan."
+    description:
+      "We evaluate your current skills and create a personalized learning plan.",
   },
   {
     id: 2,
     title: "Theory & Skills",
-    description: "Master road rules, safety protocols, and essential driving techniques."
+    description:
+      "Master road rules, safety protocols, and essential driving techniques.",
   },
   {
     id: 3,
     title: "Practical Lessons",
-    description: "Learn through hands-on driving experience with expert guidance."
+    description:
+      "Learn through hands-on driving experience with expert guidance.",
   },
   {
     id: 4,
     title: "Test Preparation",
-    description: "Final preparations and practice to ensure you're ready to pass your test."
+    description:
+      "Final preparations and practice to ensure you're ready to pass your test.",
   },
-]
+];
 
 export const questions = [
   {
     id: 1,
     question: "How do I book a driving lesson?",
-    answer: "To book a driving lesson, simply visit our website or call our customer service team. You can also use our mobile app for convenient scheduling."
+    answer:
+      "To book a driving lesson, simply visit our website or call our customer service team. You can also use our mobile app for convenient scheduling.",
   },
   {
     id: 2,
     question: "Do you provide cars for the driving test?",
-    answer: "Yes, you can use our dual-control vehicles for your practical driving test for an additional fee, which includes a pre-test warm-up lesson."
+    answer:
+      "Yes, you can use our dual-control vehicles for your practical driving test for an additional fee, which includes a pre-test warm-up lesson.",
   },
   {
     id: 3,
     question: "Is payment refundable?",
-    answer: "No payment isn't refundable. However, if you cancel your lesson, we will not refund the full amount. You can contact our customer service team for more information."
-  }
-]
+    answer:
+      "No payment isn't refundable. However, if you cancel your lesson, we will not refund the full amount. You can contact our customer service team for more information.",
+  },
+];
 
 export const Leaders = [
   {
@@ -429,28 +448,31 @@ export const Leaders = [
     name: "Michael Chen",
     avatar: image.founder,
     position: "Founder & CEO",
-    theme: "Former driving instructor with 25+ years of experience and a passion for road safety."
+    theme:
+      "Former driving instructor with 25+ years of experience and a passion for road safety.",
   },
   {
     id: 2,
     name: "Lisa Chen",
     avatar: image.founder,
     position: "Co-founder & CMO",
-    theme: "Specializes in curriculum development and instructor training methodologies."
+    theme:
+      "Specializes in curriculum development and instructor training methodologies.",
   },
   {
     id: 2,
     name: "David Wilson",
     avatar: image.founder,
     position: "Head Instructor",
-    theme: "Master instructor with expertise in defensive and advanced driving techniques."
+    theme:
+      "Master instructor with expertise in defensive and advanced driving techniques.",
   },
   {
     id: 2,
     name: "Sarah Johnson",
     avatar: image.founder,
     position: "Operations Manager",
-    theme: "Ensures all locations maintain our high standards of instruction and customer service."
+    theme:
+      "Ensures all locations maintain our high standards of instruction and customer service.",
   },
-]
-
+];

@@ -19,6 +19,10 @@ const Sidebar = () => {
   const pathname = usePathname();
   const date = new Date().getFullYear();
 
+  if (pathname.startsWith("/lessons")) {
+    return null;
+  }
+
   const isLinkActive = (link: (typeof SiteLinks)[0]) => {
     if (pathname === link.link) {
       return true;
