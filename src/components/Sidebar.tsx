@@ -10,6 +10,8 @@ import { SiteLinks } from "@/lib/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { useAuth } from "@/context/AuthContext";
+import Image from "next/image";
 
 const drawerWith = 240;
 
@@ -18,6 +20,7 @@ const Sidebar = () => {
   const theme = useTheme();
   const pathname = usePathname();
   const date = new Date().getFullYear();
+  const { user } = useAuth();
 
   if (pathname.startsWith("/lessons")) {
     return null;
@@ -116,18 +119,45 @@ const Sidebar = () => {
               );
             })}
           </ul>
-          <div className="px-2">
-            <Link href="/">
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="w-full py-3 px-4 mt-6 bg-green-500 text-white rounded-md"
-              >
-                <p className="text-sm font-inter text-center">Book a Lesson</p>
-              </motion.div>
-            </Link>
-          </div>
+          {user ? (
+            <div className="px-2 mt-2">
+              <div className="bg-gray-100 p-3 rounded-md flex flex-row gap-3 items-center">
+                <div>
+                  <Image
+                    src={user?.avatarUri || ""}
+                    className="size-10 rounded-full"
+                    alt="avatar"
+                    width={40}
+                    height={40}
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-inter">
+                    {user?.surname} {user?.othernames}
+                  </p>
+                  <p className="text-xs font-inter">{user?.email}</p>
+                  <p className="text-xs font-inter text-green-500">
+                    {user?.role?.slice(0, 1).toUpperCase() +
+                      (user?.role?.slice(1) || "")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="px-2">
+              <Link href="/auth/login">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="w-full py-3 px-4 mt-6 bg-green-500 text-white rounded-md"
+                >
+                  <p className="text-sm font-inter text-center">Register</p>
+                </motion.div>
+              </Link>
+            </div>
+          )}
+
           <div className="absolute bottom-0 w-full p-5 py-2">
             <p className="font-inter text-xs">
               &copy; Veagy Co-operation {date}

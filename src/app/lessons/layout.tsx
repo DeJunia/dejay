@@ -6,7 +6,7 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 const LessonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <TooltipProvider delayDuration={0}>
-      <main className="w-full">
+      <main className="w-full overflow-x-hidden">
         <LessonHeader />
         {children}
       </main>

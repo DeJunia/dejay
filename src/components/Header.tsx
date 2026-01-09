@@ -6,10 +6,12 @@ import { SiteLinks as Links } from "@/lib/data";
 import { image } from "@/constant";
 import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useAuth } from "@/context/AuthContext";
 
 const Header = () => {
   const pathname = usePathname();
   const { scrollY } = useScroll();
+  const { user } = useAuth();
 
   const backgroundColor = useTransform(
     scrollY,
@@ -31,7 +33,7 @@ const Header = () => {
   return (
     <div className="Header w-full fixed z-50 top-0 justify-center flex items-center">
       <motion.div
-        className="w-full p-5 gap-5 flex flex-row justify-between  px-10"
+        className="w-full p-3 gap-5 flex flex-row justify-between  px-10"
         style={{
           background: backgroundColor,
         }}
@@ -49,7 +51,7 @@ const Header = () => {
             <p className="text-sm font-semibold">Driving School</p>
           </div>
         </Link>
-        <div className="midnav h-14 flex flex-row items-center gap-3">
+        <div className="midnav h-13 flex flex-row items-center gap-3">
           <ul className="flex flex-row gap-5 h-full ">
             {Links.map((link) => {
               const isActive = isLinkActive(link);
@@ -86,16 +88,30 @@ const Header = () => {
               );
             })}
           </ul>
-          <Link href="/">
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className="bg-green-500 flex flex-row items-center justify-center gap-2 px-3 h-8 rounded-md text-white font-inter text-sm"
-            >
-              <p>Book a Lesson</p>
-            </motion.div>
-          </Link>
+          {user ? (
+            <Link href={"/"}>
+              <div>
+                <Image
+                  src={user?.avatarUri || ""}
+                  className="size-8 rounded-full"
+                  alt="avatar"
+                  width={28}
+                  height={28}
+                />
+              </div>
+            </Link>
+          ) : (
+            <Link href="/auth/login">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="bg-green-500 flex flex-row items-center justify-center gap-2 px-3 h-8 rounded-md text-white min-w-[100px] font-inter text-sm"
+              >
+                <p>Register</p>
+              </motion.div>
+            </Link>
+          )}
         </div>
       </motion.div>
     </div>

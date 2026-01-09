@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Chango } from "next/font/google";
 import "./globals.css";
-import { Header, Sidebar, Footer, MbHeader } from "@/components";
+import MainLayout from "@/components/Layout/mainLayout";
+import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,8 @@ const chango = Chango({
   subsets: ["latin"],
   variable: "--font-chango",
 });
+
+import { Toaster as Sonner } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dejaydrivingsch.vercel.app"),
@@ -87,11 +90,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${chango.variable} antialiased text-gray-800 font-inter`}
       >
-        <Header />
-        <MbHeader />
-        <Sidebar />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <Sonner />
+          <MainLayout>{children}</MainLayout>
+        </AuthProvider>
       </body>
     </html>
   );

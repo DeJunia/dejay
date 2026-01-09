@@ -5,10 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 const MbHeader = () => {
   const { scrollY } = useScroll();
   const pathname = usePathname();
+  const { user } = useAuth();
 
   const backgroundColor = useTransform(
     scrollY,
@@ -22,20 +24,38 @@ const MbHeader = () => {
 
   return (
     <motion.div
-      className="MbHeader w-full fixed z-40 top-0 flex p-5 "
+      className="MbHeader w-full fixed z-40 top-0 flex"
       style={{ background: backgroundColor }}
     >
-      <Link href="/" className="flex flex-row gap-3">
-        <Image
-          src={image.logo}
-          className="w-12 rounded-full"
-          alt="Dejay logo"
-        />
-        <div>
-          <p className="text-green-600 font-bold font-chango text-xl">DEJAY</p>
-          <p className="text-sm font-semibold">Driving School</p>
-        </div>
-      </Link>
+      <div className="p-5 flex items-center justify-between pr-16">
+        <Link href="/" className="flex flex-row gap-3">
+          <Image
+            src={image.logo}
+            className="w-12 rounded-full"
+            alt="Dejay logo"
+          />
+          <div>
+            <p className="text-green-600 font-bold font-chango text-xl">
+              DEJAY
+            </p>
+            <p className="text-sm font-semibold">Driving School</p>
+          </div>
+        </Link>
+
+        {user && (
+          <div>
+            <div>
+              <Image
+                src={user?.avatarUri || ""}
+                className="size-8 rounded-full"
+                alt="avatar"
+                width={28}
+                height={28}
+              />
+            </div>
+          </div>
+        )}
+      </div>
     </motion.div>
   );
 };

@@ -1,3 +1,5 @@
+import type { JSONContent } from "@tiptap/core";
+
 interface SiteLink {
   name: string;
   link: string;
@@ -17,6 +19,11 @@ export interface Course {
   description: string;
   packages: string[];
   routine: string[];
+}
+
+export interface ErrorResponse {
+  message: string;
+  errors?: Record<string, string[]>;
 }
 
 export interface TestimonialProps {
@@ -45,19 +52,70 @@ export interface User {
   createdAt: Date;
 }
 
+export type LessonStatus = "draft" | "published";
+
+export interface LessonContent {
+  type: "doc";
+  content: JSONContent[];
+}
+
 export interface Lesson {
-  id: string;
+  _id?: string;
   title: string;
-  subtitle: string;
-  content: string;
-  author: User;
-  coverImage?: ImageData;
-  images: ImageData[];
-  createdAt: Date;
-  updatedAt: Date;
-  readTime: number;
-  tags: string[];
-  isPublished: boolean;
+  content: LessonContent;
+  categoryId: string;
+  status: LessonStatus;
+  isTodaysLesson: boolean;
+  authorId?: string;
+  authorName?: string;
+  scheduledDate?: string;
+  viewCount?: number;
+  marginMode?: "normal" | "wide";
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface LessonCreateInput {
+  title: string;
+  content: LessonContent;
+  categoryId: string;
+  status: LessonStatus;
+  isTodaysLesson?: boolean;
+  marginMode?: "normal" | "wide";
+  scheduledDate?: string;
+}
+
+export interface LessonUpdateInput extends Partial<LessonCreateInput> {
+  id: string;
+}
+
+// Category Types
+export interface Category {
+  _id?: string;
+  name: string;
+  description?: string;
+  color: string;
+  pdfUrl?: string;
+  pdfName?: string;
+  lessonCount?: number;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CategoryRes {
+  data: Category[];
+  message: string;
+  success: boolean;
+}
+
+export interface CategoryCreateInput {
+  name: string;
+  description?: string;
+  color: string;
+}
+
+export interface CategoryUpdateInput extends Partial<CategoryCreateInput> {
+  id: string;
 }
 
 export interface ImageData {

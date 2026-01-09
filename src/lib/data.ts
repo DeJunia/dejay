@@ -1,5 +1,4 @@
 import { BiHomeAlt2 } from "react-icons/bi";
-import { HiOutlineExclamationCircle } from "react-icons/hi2";
 import { LuListTodo } from "react-icons/lu";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { LuUsers } from "react-icons/lu";
@@ -15,11 +14,13 @@ import { AiOutlineSafety } from "react-icons/ai";
 import { SlChemistry } from "react-icons/sl";
 import { LuSettings2 } from "react-icons/lu";
 import { MdOutlinePlayLesson } from "react-icons/md";
+import { TbHeart } from "react-icons/tb";
+import { MdOutlineCategory } from "react-icons/md";
 
 export const SiteLinks = [
   {
     name: "Home",
-    link: "/",
+    link: "/tabs",
     icon: BiHomeAlt2,
   },
   {
@@ -29,7 +30,7 @@ export const SiteLinks = [
   },
   {
     name: "Courses",
-    link: "/courses",
+    link: "/tabs/courses",
     icon: LuListTodo,
   },
   // {
@@ -39,18 +40,35 @@ export const SiteLinks = [
   // },
   {
     name: "Pricing",
-    link: "/pricing",
+    link: "/tabs/pricing",
     icon: IoPricetagsOutline,
   },
   {
     name: "Staff",
-    link: "/staff",
+    link: "/tabs/staff",
     icon: LuUsers,
   },
   {
     name: "Contact",
-    link: "/contact",
+    link: "/tabs/contact",
     icon: PiPhoneCall,
+  },
+];
+export const SiteLinks2 = [
+  {
+    name: "Home",
+    link: "/lessons",
+    icon: BiHomeAlt2,
+  },
+  {
+    name: "Categories",
+    link: "/lessons/categories",
+    icon: MdOutlineCategory,
+  },
+  {
+    name: "Favorites",
+    link: "/lessons/favourites",
+    icon: TbHeart,
   },
 ];
 
