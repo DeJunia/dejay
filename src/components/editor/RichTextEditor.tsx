@@ -97,7 +97,7 @@ const RichTextEditor = ({
           marginMode === "wide" ? "max-w-[1700px]" : "max-w-4xl"
         }`}
       >
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           {/* Toolbar loading skeleton */}
           <div className="p-2 border-b bg-gray-50">
             <div className="animate-pulse flex space-x-2">
@@ -123,7 +123,7 @@ const RichTextEditor = ({
       }`}
     >
       {/* Fixed Toolbar at the top */}
-      <div className="flex-shrink-0 hidden md:block">
+      <div className="shrink-0 hidden md:block">
         <Toolbar
           editor={editor}
           form={form}

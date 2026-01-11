@@ -24,7 +24,7 @@ const ReadLesson = ({ content }: { content?: LessonContent }) => {
   if (!editor) return null;
 
   return (
-    <article className="w-full max-w-4xl mx-auto px-4 py-10 bg-transparent">
+    <article className="w-full max-w-4xl mx-auto px-4 bg-transparent">
       <EditorContent
         editor={editor}
         className="prose prose-lg max-w-none bg-transparent focus:outline-none"

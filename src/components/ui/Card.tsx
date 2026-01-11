@@ -168,7 +168,7 @@ export const CategoryCard = ({ category }: { category: Category }) => {
       className="cursor-pointer group"
       onClick={() => router.push(`/lessons/category/${category?._id}`)}
     >
-      <div className="py-5 bg-white flex flex-col gap-4">
+      <div className="py-5 bg-white flex flex-col gap-4 border-b border-gray-100 h-full">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex gap-3 items-center">

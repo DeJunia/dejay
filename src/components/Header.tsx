@@ -63,7 +63,7 @@ const Header = () => {
                       <motion.div>
                         <motion.div
                           className={`flex flex-row items-center justify-center ${
-                            isActive ? "text-green-600 bg-gray-100" : ""
+                            isActive ? "text-green-600 bg-gray-50" : ""
                           } gap-2 px-3 h-8 rounded-md text-gray-800`}
                           initial={false}
                           animate={{

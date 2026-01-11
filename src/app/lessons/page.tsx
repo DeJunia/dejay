@@ -35,19 +35,19 @@ const LessonPage = () => {
           </p>
         </section> */}
 
-        <section>
+        {/* <section>
           <div className="px-5 md:px-10 p">
             <h1 className="text-2xl md:text-4xl font-extrabold font-inter text-center">
               Your Daily <span className="text-green-500">Lessons</span>
             </h1>
-            <p className="text-base md:text-xl font-inter  text-center mt-2 text-gray-600">
+            <p className="text-xs md:text-base font-inter  text-center mt-2 text-gray-600">
               Access your daily lessons, study materials, and practice guides.
               Learn at your own pace with our comprehensive driving curriculum.
             </p>
           </div>
-        </section>
+        </section> */}
 
-        <section className="px-5 mt-15">
+        <section className="px-5 ">
           <div className="flex flex-row gap-3 mb-5">
             <div className="size-10 flex items-center justify-center bg-green-50 rounded-lg">
               <Calendar className="size-5 text-green-500" />
@@ -56,7 +56,7 @@ const LessonPage = () => {
               <h1 className="text-black font-semibold font-inter">
                 Todays Lessons
               </h1>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs md:text-sm text-gray-500">
                 Browse through our daily lessons
               </p>
             </div>
@@ -75,7 +75,7 @@ const LessonPage = () => {
                 <h1 className="text-black font-semibold font-inter">
                   Categories
                 </h1>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs md:text-sm text-gray-500">
                   Browse through our categories
                 </p>
               </div>
@@ -106,7 +106,7 @@ const LessonPage = () => {
                 <h1 className="text-black font-semibold font-inter">
                   Categories
                 </h1>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs md:text-sm text-gray-500">
                   Browse through our categories
                 </p>
               </div>
@@ -128,7 +128,7 @@ const LessonPage = () => {
               <h1 className="text-black font-semibold font-inter">
                 Latest Lessons
               </h1>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs md:text-sm text-gray-500">
                 Browse through our latest lessons
               </p>
             </div>

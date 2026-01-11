@@ -1,6 +1,5 @@
 import React from "react";
 import { reactIcons } from "@/constant";
-import { Button } from "./ui/Button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
@@ -22,9 +21,10 @@ const LessonHeader = () => {
     ["rgba(255, 255, 255, 0.2)", "rgba(255, 255, 255, 1)"]
   );
 
-  if (pathname === "/lessons/add") {
+  if (pathname === "/lessons/add" || pathname.startsWith("/lessons/read")) {
     return null;
   }
+
   const isLinkActive = (link: (typeof Links)[0]) => {
     if (pathname === link.link) {
       return true;
@@ -61,7 +61,7 @@ const LessonHeader = () => {
                         <motion.div>
                           <motion.div
                             className={`flex flex-row items-center justify-center ${
-                              isActive ? "text-green-600 bg-gray-100" : ""
+                              isActive ? "text-green-600 bg-gray-50" : ""
                             } gap-2 px-3 h-8 rounded-md text-gray-800`}
                             initial={false}
                             animate={{
@@ -107,7 +107,7 @@ const LessonHeader = () => {
                   />
                   {user.role === "student" && (
                     <div className="hidden md:flex flex-col">
-                      <p className="text-sm max-w-[100px] truncate">
+                      <p className="text-sm max-w-25 truncate">
                         {user?.surname} {user?.othernames}
                       </p>
                       <p className="text-xs text-green-500">
