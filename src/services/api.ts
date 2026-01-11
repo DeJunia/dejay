@@ -7,10 +7,10 @@ const mode =
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-// ✅ Ensure production URL starts with https:// 192.168.133.253
+// ✅ Ensure production URL starts with https:// 192.168.133.253 // 192.168.1.156
 const BASE_URL =
   mode === "development"
-    ? "http://192.168.1.156:5050/api/v1/"
+    ? "http://192.168.217.253:5050/api/v1/"
     : `https://${apiUrl}`;
 
 const api: AxiosInstance = axios.create({

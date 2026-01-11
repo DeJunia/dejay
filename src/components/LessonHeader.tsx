@@ -90,14 +90,8 @@ const LessonHeader = () => {
           <div className="flex flex-row gap-3 items-center">
             <Link href="/lessons/add">
               <div className="flex flex-row items-center justify-center gap-2">
-                <BookOpenCheck className="w-5 h-5" />
+                <BookOpenCheck className="size-6 md:size-3.5" />
                 <span className="hidden md:flex text-xs">Add Lesson</span>
-              </div>
-            </Link>
-            <Link href="/lessons/add/category">
-              <div className="flex flex-row items-center justify-center gap-2">
-                <LayoutDashboard className="w-5 h-5" />
-                <span className="hidden md:flex text-xs">Add Category</span>
               </div>
             </Link>
 

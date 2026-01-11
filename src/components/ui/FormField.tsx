@@ -3,12 +3,33 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { LuEye, LuEyeClosed } from "react-icons/lu";
+import { AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { useRef, useEffect } from "react";
+
+interface SelectInputProps {
+  name: string;
+  value: string | number;
+  label?: string;
+  options: Option[];
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  style?: string;
+  labelStyle?: string;
+  dropStyle?: string;
+  placeholder?: string;
+}
+
+interface Option {
+  value: string | number;
+  label: string;
+}
 
 interface formFiledProps {
   value?: string;
   placeholder?: string;
   title?: string;
   handleInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  style?: string;
 }
 
 type CheckboxGroupProps = {
@@ -46,17 +67,24 @@ export const UnderlineFormField: React.FC<formFiledProps> = ({
   placeholder,
   title,
   handleInputChange,
+  style,
 }) => {
   return (
     <div className="flex flex-col gap-1 w-full">
       {title && <label className="text-sm font-medium">{title}</label>}
-      <input
-        type="text"
-        value={value}
-        placeholder={placeholder}
-        onChange={handleInputChange}
-        className="px-4 py-2 border-b-2 border-gray-500 focus:outline-none focus:border-green-500"
-      />
+      <div
+        className={`w-full border-b-2 border-gray-200  group ${style} focus-within:border-green-500 transition p-1`}
+      >
+        <div className="h-full bg-gray-100 rounded-md px-3">
+          <input
+            type="text"
+            value={value}
+            placeholder={placeholder}
+            onChange={handleInputChange}
+            className="outline-0 bg-transparent w-full text-gray-800 placeholder:text-gray-800 h-full"
+          />
+        </div>
+      </div>
     </div>
   );
 };
@@ -246,6 +274,113 @@ export const TextArea = ({
           />
         </div>
       </div>
+    </div>
+  );
+};
+
+export const SelectInput: React.FC<SelectInputProps> = ({
+  name,
+  value,
+  label,
+  options,
+  onChange,
+  style,
+  labelStyle,
+  placeholder,
+  dropStyle,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const selectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [isOpen]);
+
+  const handleOptionClick = (val: string) => {
+    const event = {
+      target: { name, value: val },
+    } as React.ChangeEvent<HTMLSelectElement>;
+    onChange(event);
+    setIsOpen(false);
+  };
+
+  const selectedOption = options.find(
+    (opt) => opt.value.toString() === value?.toString()
+  );
+
+  const selectedLabel = selectedOption?.label || placeholder || "Select";
+
+  return (
+    <div className="relative w-full" ref={selectRef}>
+      {label && (
+        <label
+          className={`block text-base font-medium text-gray-800 ${labelStyle}`}
+        >
+          {label}
+        </label>
+      )}
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full border-2 border-gray-200 text-gray-800  rounded-lg focus:outline-none ${style} p-1`}
+      >
+        <div className="w-full flex justify-between items-center h-full bg-gray-100 rounded-md pl-5 pr-3">
+          <span className="text-gray-800">{selectedLabel}</span>
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronDown size={20} />
+          </motion.div>
+        </div>
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className={`absolute z-50 w-full mt-3 bg-gray-100 rounded-lg shadow-md overflow-hidden pt-4 pb-2 ${dropStyle}`}
+          >
+            {options.map((option) => (
+              <li
+                key={option.value}
+                onClick={() => handleOptionClick(option.value.toString())}
+                className="px-4 py-2 hover:bg-gray-100  cursor-pointer text-sm"
+              >
+                {option.label}
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

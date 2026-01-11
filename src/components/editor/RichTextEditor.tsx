@@ -2,12 +2,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import Toolbar from "./Toolbar";
 
-import { extensions, useEditor, EditorContent } from "@/lib/editor/extensions";
+import { extensions } from "@/lib/editor/extensions";
 import type { LessonContent } from "@/types/type";
 import ToolbarSm from "./ToolBarSm";
 import "./editor-styles.css";
 import BottomSection from "./bottomSection";
 import { Lesson } from "@/types/type";
+import { EditorContent, useEditor } from "@tiptap/react";
 
 interface LessonEditorProps {
   content?: LessonContent;
@@ -18,6 +19,8 @@ interface LessonEditorProps {
   readOnly?: boolean;
   setForm?: (form: Lesson) => void;
   handleChange?: (field: keyof Lesson, value: string) => void;
+  handleSubmit?: () => void;
+  isLoading?: boolean;
 }
 
 const RichTextEditor = ({
@@ -26,6 +29,8 @@ const RichTextEditor = ({
   setForm,
   onChange,
   handleChange,
+  handleSubmit,
+  isLoading,
   marginMode,
   placeholder = "Start typing your content here...",
   readOnly,
@@ -88,7 +93,7 @@ const RichTextEditor = ({
   if (!isMounted) {
     return (
       <div
-        className={`h-screen flex flex-col border w-full mx-auto ${
+        className={`h-svh flex flex-col border w-full mx-auto ${
           marginMode === "wide" ? "max-w-[1700px]" : "max-w-4xl"
         }`}
       >
@@ -113,7 +118,7 @@ const RichTextEditor = ({
 
   return (
     <div
-      className={`relative h-screen flex flex-col border w-full mx-auto bg-gray-50 ${
+      className={`relative h-svh flex flex-col border w-full mx-auto bg-gray-50 ${
         marginMode === "wide" ? "max-w-[1700px]" : "max-w-4xl"
       }`}
     >
@@ -124,16 +129,22 @@ const RichTextEditor = ({
           form={form}
           setForm={setForm}
           handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          isLoading={isLoading}
         />
       </div>
       <div className="block md:hidden flex-shrink-0">
-        <ToolbarSm editor={editor} />
+        <ToolbarSm
+          editor={editor}
+          handleSubmit={handleSubmit}
+          isLoading={isLoading}
+        />
       </div>
 
       {/* Scrollable Content Area */}
       <div
         ref={editorContainerRef}
-        className={`flex-1 overflow-y-auto mx-auto max-w-7xl w-full rounded-lg bg-white `}
+        className={`flex-1 overflow-y-auto mx-auto max-w-4xl w-full rounded-lg bg-white `}
       >
         <div className="p-4 min-h-full">
           <div className="relative">

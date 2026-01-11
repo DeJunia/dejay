@@ -60,7 +60,6 @@ export interface LessonContent {
 }
 
 export interface Lesson {
-  _id?: string;
   title: string;
   content: LessonContent;
   categoryId: string;
@@ -69,6 +68,22 @@ export interface Lesson {
   authorId?: string;
   authorName?: string;
   scheduledDate?: string;
+  readingTime?: number;
+  viewCount?: number;
+  marginMode?: "normal" | "wide";
+}
+
+export interface LessonData {
+  _id?: string;
+  title: string;
+  content: LessonContent;
+  categoryId: Category;
+  status: LessonStatus;
+  isTodaysLesson: boolean;
+  authorId?: string;
+  authorName?: string;
+  scheduledDate?: string;
+  readingTime?: number;
   viewCount?: number;
   marginMode?: "normal" | "wide";
   createdAt?: string;
@@ -104,6 +119,17 @@ export interface Category {
 
 export interface CategoryRes {
   data: Category[];
+  message: string;
+  success: boolean;
+}
+
+export interface LessonRes {
+  data: LessonData;
+  message: string;
+  success: boolean;
+}
+export interface LessonSRes {
+  data: LessonData[];
   message: string;
   success: boolean;
 }

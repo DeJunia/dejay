@@ -9,7 +9,8 @@
 
 .ProseMirror {
   min-height: 500px;
-  padding: 5px;
+  padding-block: 30px;
+  padding-inline: 10px;
   outline: none;
 }
 
@@ -33,7 +34,7 @@
 
 .ProseMirror h3 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-top: 1rem;
   font-family: "Inter", sans-serif;
   margin-bottom: 0.5rem;
@@ -44,7 +45,7 @@
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   font-family: "Inter", sans-serif;
-  line-height: 1;
+  line-height: 1.6;
 }
 
 .ProseMirror ul {
@@ -53,17 +54,32 @@
   margin: 0.75rem 0;
 }
 
+.ProseMirror ul li::marker {
+  color: hsl(173, 80%, 40%);
+}
+
 .ProseMirror ol {
   list-style-type: decimal;
   padding-left: 1.5rem;
   margin: 0.75rem 0;
 }
 
+.ProseMirror ol li::marker {
+  color: hsl(173, 80%, 40%);
+}
+
 .ProseMirror blockquote {
-  border-left: 4px solid #d1d5db;
-  padding-left: 1rem;
+  border-left: 4px solid hsl(173, 80%, 40%);
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  background-color: #d1d5db19;
   margin: 1rem 0;
   color: #4b5563;
+}
+
+.ProseMirror hr {
+  border: none;
+  border-top: 1px solid #d1d5db;
+  margin: 0 0 2rem 0;
 }
 
 .ProseMirror .is-empty::before {
@@ -178,6 +194,26 @@
   .column-right::before {
     top: -6px;
     font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .ProseMirror {
+    padding-block: 20px;
+    padding-inline: 5px;
+    outline: none;
+  }
+
+  .ProseMirror h1 {
+    font-size: 2.05rem;
+  }
+
+  .ProseMirror h2 {
+    font-size: 1.7rem;
+  }
+
+  .ProseMirror h3 {
+    font-size: 1.4rem;
   }
 }
 

@@ -18,16 +18,19 @@
   --font-chango: var(--font-chango);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
 ::selection {
   color: white;
-  background: #00c951;
+  background: #00c95078;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 8px;
 }
 
 body {

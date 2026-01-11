@@ -11,14 +11,16 @@ import {
   List,
   ListOrdered,
   ArrowLeft,
-  Undo,
-  Redo,
+  Undo2,
+  Redo2,
   Heading1,
   Heading2,
   Pilcrow,
   Heading3,
   ChevronsDown,
   ImageIcon,
+  CopyX,
+  Minus,
   Quote,
   Strikethrough,
   Columns2,
@@ -44,24 +46,53 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Spinner } from "../ui/spinner";
 
 interface EditorToolbarProps {
   editor: Editor | null;
   onImageUpload?: () => void;
+  handleSubmit?: () => void;
+  isLoading?: boolean;
 }
 
 const TEXT_COLORS = [
+  // Base
   { name: "Default", value: null },
-  { name: "Primary", value: "hsl(217, 91%, 50%)" },
-  { name: "Red", value: "hsl(0, 84%, 60%)" },
-  { name: "Orange", value: "hsl(38, 92%, 50%)" },
-  { name: "Green", value: "hsl(142, 71%, 45%)" },
+
+  // Greens (brand core)
+  { name: "Dark Green", value: "hsl(142, 72%, 29%)" },
+  { name: "Tailwind Green", value: "hsl(142, 71%, 45%)" },
+  { name: "Soft Green", value: "hsl(142, 69%, 58%)" },
+  { name: "Muted Green", value: "hsl(143, 30%, 45%)" },
+
+  // Bridge color (NEW)
+  { name: "Teal", value: "hsl(173, 80%, 40%)" },
+
+  // Blues
+  { name: "Primary Blue", value: "hsl(217, 91%, 50%)" },
   { name: "Blue", value: "hsl(217, 91%, 60%)" },
-  { name: "Purple", value: "hsl(270, 70%, 55%)" },
+
+  // Accent warm colors
+  { name: "Amber", value: "hsl(45, 93%, 47%)" },
+  { name: "Orange", value: "hsl(38, 92%, 50%)" },
+  { name: "Red", value: "hsl(0, 84%, 60%)" },
+
+  // Neutrals (reading comfort)
+  { name: "Dark Gray", value: "hsl(220, 15%, 25%)" },
   { name: "Gray", value: "hsl(220, 9%, 46%)" },
+  { name: "Slate", value: "hsl(215, 20%, 55%)" }, // ✅ added
+  { name: "Light Gray", value: "hsl(220, 14%, 70%)" },
+
+  // Creative accent
+  { name: "Purple", value: "hsl(270, 70%, 55%)" },
 ];
 
-const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
+const Toolbar = ({
+  editor,
+  onImageUpload,
+  handleSubmit,
+  isLoading,
+}: EditorToolbarProps) => {
   const router = useRouter();
 
   interface EditorState {
@@ -76,6 +107,8 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
     isHeading3: boolean;
     isStrikethrough: boolean;
     isParagraph: boolean;
+    canHorizontalRule: boolean;
+    isHorizontalRule: boolean;
     canParagraph: boolean;
     isHighlight: boolean;
     canHighlight: boolean;
@@ -112,6 +145,8 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
           isParagraph: false,
           canParagraph: false,
           isHighlight: false,
+          canHorizontalRule: false,
+          isHorizontalRule: false,
           canHighlight: false,
           isOrderedList: false,
           isBlockquote: false,
@@ -134,6 +169,8 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
         canItalic: e.can().toggleItalic(),
         isUnderline: e.isActive("underline"),
         canUnderline: e.can().toggleUnderline(),
+        canHorizontalRule: e.can().setHorizontalRule(),
+        isHorizontalRule: e.isActive("horizontalRule"),
         isHeading1: e.isActive("heading", { level: 1 }),
         isHeading2: e.isActive("heading", { level: 2 }),
         isHeading3: e.isActive("heading", { level: 3 }),
@@ -157,7 +194,6 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
       };
     },
   });
-
   const goBack = useCallback(() => router.back(), [router]);
 
   const ToolbarButton: React.FC<{
@@ -223,7 +259,7 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
             onClick={() => editor.chain().focus().undo().run()}
             disabled={!editorState.canUndo}
             title="Undo"
-            icon={Undo}
+            icon={Undo2}
             style="border-2 border-gray-300 hover:border-green-500"
           />
           <Separator orientation="vertical" className="h-7" />
@@ -231,7 +267,7 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
             onClick={() => editor.chain().focus().redo().run()}
             disabled={!editorState.canRedo}
             title="Redo"
-            icon={Redo}
+            icon={Redo2}
             style="border-2 border-gray-300 hover:border-green-500"
           />
           <Tooltip>
@@ -242,7 +278,11 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
                 type="button"
               >
                 <ChevronsDown className="h-4 w-4 text-green-500" />
-                <span className="text-sm md:hidden text-green-500">Save</span>
+                {isLoading ? (
+                  <Spinner className="w-5 h-5" />
+                ) : (
+                  <span className="text-sm md:hidden text-green-500">Save</span>
+                )}
               </button>
             </TooltipTrigger>
             <TooltipContent side="bottom">Save</TooltipContent>
@@ -274,6 +314,13 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
             isActive={editorState.isUnderline}
             title="Underline"
             icon={Underline}
+          />
+          <ToolbarButton
+            onClick={() => editor.chain().focus().setHorizontalRule().run()}
+            disabled={!editorState.canHorizontalRule}
+            isActive={editorState.isHorizontalRule}
+            title="Hardbreak"
+            icon={Minus}
           />
           <ToolbarButton
             onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -534,6 +581,14 @@ const Toolbar = ({ editor, onImageUpload }: EditorToolbarProps) => {
               </div>
             </PopoverContent>
           </Popover>
+
+          <Separator orientation="vertical" className="h-7" />
+          <ToolbarButton
+            onClick={() => editor.commands.clearContent()}
+            style="text-red-500 hover:text-red-600"
+            title="Clear Content"
+            icon={CopyX}
+          />
         </div>
       </div>
     </div>

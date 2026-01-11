@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter, Chango } from "next/font/google";
 import "./globals.css";
 import MainLayout from "@/components/Layout/mainLayout";
 import { AuthProvider } from "@/context/AuthContext";
+import Providers from "@/lib/providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -90,10 +91,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${chango.variable} antialiased text-gray-800 font-inter`}
       >
-        <AuthProvider>
+        <Providers>
           <Sonner />
           <MainLayout>{children}</MainLayout>
-        </AuthProvider>
+        </Providers>
       </body>
     </html>
   );
