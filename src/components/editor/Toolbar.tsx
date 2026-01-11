@@ -226,7 +226,7 @@ const Toolbar = ({
     </Tooltip>
   );
 
-  const { data } = useCategories();
+  const { data } = useCategories(100, 1);
   const categories = (data?.data as Category[]) ?? [];
 
   useEffect(() => {
