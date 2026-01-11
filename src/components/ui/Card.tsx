@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { TestimonialProps } from "@/types/type";
 import Image from "next/image";
@@ -11,11 +12,11 @@ import { useRouter } from "next/navigation";
 
 const Card: React.FC<{ item: TestimonialProps }> = ({ item }) => {
   return (
-    <div className="w-full flex-shrink-0 p-5 bg-white rounded-lg border-2 border-gray-100">
+    <div className="w-full shrink-0 p-5 bg-white rounded-lg border-2 border-gray-100">
       <div className="w-full">
         <div className="flex flex-row gap-5 items-start justify-between">
           <div className="flex flex-row gap-3 sm:gap-5 items-center">
-            <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex-shrink-0">
+            <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 shrink-0">
               <Image
                 src={item.avatar}
                 alt=""

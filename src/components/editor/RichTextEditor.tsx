@@ -133,7 +133,7 @@ const RichTextEditor = ({
           isLoading={isLoading}
         />
       </div>
-      <div className="block md:hidden flex-shrink-0">
+      <div className="block md:hidden shrink-0">
         <ToolbarSm
           editor={editor}
           handleSubmit={handleSubmit}
