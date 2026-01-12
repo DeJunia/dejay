@@ -95,7 +95,7 @@ export default function BottomInputBar({
       <div
         className="md:hidden fixed left-0 right-0 bottom-[env(safe-area-inset-bottom)]
         z-50 bg-white shadow-[0_-8px_24px_rgba(0,0,0,0.08)]
-        px-3 py-2 flex items-center gap-2 p-4"
+        px-3 py-2 flex items-center gap-2 p-4 w-full"
       >
         {/* Read Time */}
         <input
@@ -123,9 +123,9 @@ export default function BottomInputBar({
         <button
           onClick={toggleCategories}
           className="h-10 px-4 rounded-full border-2 border-green-500 bg-green-500
-          text-sm font-medium whitespace-nowrap max-w-[130px] "
+          text-sm font-medium whitespace-nowrap max-w-[100px] "
         >
-          <p className="line-clamp-1">
+          <p className="line-clamp-1 text-xs">
             {selectedCategory ? selectedCategory.name : "Categories"}
           </p>
         </button>

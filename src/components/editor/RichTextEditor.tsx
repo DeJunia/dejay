@@ -118,7 +118,7 @@ const RichTextEditor = ({
 
   return (
     <div
-      className={`relative h-svh flex flex-col border w-full mx-auto bg-gray-50 ${
+      className={`relative h-svh flex flex-col w-full mx-auto bg-gray-50 ${
         marginMode === "wide" ? "max-w-[1700px]" : "max-w-4xl"
       }`}
     >

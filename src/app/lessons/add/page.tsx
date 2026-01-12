@@ -102,7 +102,6 @@ const AddLesson = () => {
         form={form}
         setForm={setForm}
         handleChange={handleChange}
-        categogories
       />
     </div>
   );
