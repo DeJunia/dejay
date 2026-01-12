@@ -179,7 +179,6 @@ const RichTextEditor = ({
           </div>
         </div>
       </div>
-      <BottomSection />
     </div>
   );
 };

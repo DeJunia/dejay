@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useParams } from "next/navigation";
 import lessonService from "@/services/lessonService";
 import { EditorContent } from "@/lib/editor/extensions";
+import BottomInputBar from "@/components/ui/BottomInputBar";
 
 const AddLesson = () => {
   const { id } = useParams<{ id: string }>();
@@ -96,6 +97,12 @@ const AddLesson = () => {
             content: newContent,
           }));
         }}
+      />
+      <BottomInputBar
+        form={form}
+        setForm={setForm}
+        handleChange={handleChange}
+        categogories
       />
     </div>
   );
